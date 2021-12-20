@@ -1,9 +1,12 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import { useState } from "react";
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import { Box } from "../components/Box";
 
 const Home: NextPage = () => {
+  const [on, toggle] = useState(true);
   return (
     <div className={styles.container}>
       <Head>
@@ -17,9 +20,11 @@ const Home: NextPage = () => {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
+        <p className={styles.description} onClick={() => toggle((p) => !p)}>
+          <Box marginLeft={on ? "$6" : "$4"} padding="$4">
+            Get started by editing{" "}
+            <code className={styles.code}>pages/index.tsx</code>
+          </Box>
         </p>
 
         <div className={styles.grid}>
@@ -59,14 +64,14 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
